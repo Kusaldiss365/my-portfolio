@@ -1,13 +1,14 @@
 import { Badge } from "./ui/badge";
 import { motion, type Variants } from "framer-motion";
-import { 
-  Code2, 
-  Database, 
-  Cloud, 
+import {
+  Code2,
+  Database,
+  Cloud,
   Laptop,
   Server,
   Wrench,
-  type LucideIcon
+  BrainCircuit,
+  type LucideIcon,
 } from "lucide-react";
 
 export function SkillsSection() {
@@ -23,43 +24,102 @@ export function SkillsSection() {
       icon: Code2,
       color: "text-blue-400",
       bgColor: "bg-blue-500/10",
-      skills: ["JavaScript", "TypeScript", "Python", "Java","C", "C++", "PHP"]
+      skills: ["JavaScript", "TypeScript", "Python", "Java", "C", "C++", "PHP"],
     },
     {
       category: "Frontend",
       icon: Laptop,
       color: "text-cyan-400",
       bgColor: "bg-cyan-500/10",
-      skills: ["React", "Next.js", "Vue.js", "Nuxt.js" , "Tailwind CSS", "Redux", "HTML/CSS", "Sass", "Marble(IFS)"]
+      skills: [
+        "React",
+        "Next.js",
+        "Vue.js",
+        "Nuxt.js",
+        "Tailwind CSS",
+        "Redux",
+        "HTML/CSS",
+        "Sass",
+        "Marble(IFS)",
+      ],
     },
     {
       category: "Backend",
       icon: Server,
       color: "text-green-400",
       bgColor: "bg-green-500/10",
-      skills: [ "Spring Boot","Laravel", "Node.js", "FastAPI (Uvicorn)", "REST APIs", "Microservices"]
+      skills: [
+        "Spring Boot",
+        "Laravel",
+        "Node.js",
+        "FastAPI",
+        "REST APIs",
+        "Microservices",
+        "Hibernate",
+        "SQLAlchemy",
+      ],
     },
     {
       category: "Databases",
       icon: Database,
       color: "text-purple-400",
       bgColor: "bg-purple-500/10",
-      skills: ["PostgreSQL", "MySQL", "MongoDB", "Firebase", "ChromaDB", "PL/SQL"]
+      skills: [
+        "PostgreSQL",
+        "MySQL",
+        "MongoDB",
+        "Firebase",
+        "ChromaDB",
+        "Pgvector",
+        "PL/SQL",
+      ],
     },
     {
       category: "CMS & DevOps",
       icon: Cloud,
       color: "text-orange-400",
       bgColor: "bg-orange-500/10",
-      skills: ["WordPress (Headless)", "Hosting (cPanel)", "AWS"]
+      skills: [
+        "WordPress (Headless)",
+        "Hosting (cPanel)",
+        "AWS Academy Graduate",
+      ],
+    },
+    {
+      category: "AI & ML",
+      icon: BrainCircuit,
+      color: "text-red-400",
+      bgColor: "bg-red-500/10",
+      skills: [
+        "LangChain",
+        "LangGraph",
+        "Hugging Face",
+        "Ollama",
+        "Llama3",
+        "OpenAI",
+        "RAG",
+        "Tool Calling",
+        "Guardrails",
+        "Self Reflection",
+      ],
     },
     {
       category: "Tools & Others",
       icon: Wrench,
       color: "text-pink-400",
       bgColor: "bg-pink-500/10",
-      skills: ["Git", "Postman", "Jira", "Agile", "Bruno", "Swagger", "LangChain", "Hugging Face", "Ollama", "Azure DevOps", "Figma"]
-    }
+      skills: [
+        "Git",
+        "Postman",
+        "Jira",
+        "Agile",
+        "Bruno",
+        "Swagger",
+        "Azure DevOps",
+        "Figma",
+        "Docker",
+      ],
+    },
   ];
 
   const containerVariants: Variants = {
@@ -71,7 +131,6 @@ export function SkillsSection() {
       },
     },
   };
-
 
   const cardVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
@@ -85,7 +144,6 @@ export function SkillsSection() {
     },
   };
 
-
   const skillBadgeVariants: Variants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
@@ -94,12 +152,14 @@ export function SkillsSection() {
     },
   };
 
-
   return (
-    <section id="skills" className="py-20 bg-slate-800 relative overflow-hidden">
+    <section
+      id="skills"
+      className="py-20 bg-slate-800 relative overflow-hidden"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-800 via-slate-800 to-slate-900 opacity-50"></div>
-      
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -113,11 +173,12 @@ export function SkillsSection() {
             </h2>
             <div className="w-20 h-1 bg-blue-600 mx-auto mb-4"></div>
             <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
-              A comprehensive overview of my technical expertise and tools I work with
+              A comprehensive overview of my technical expertise and tools I
+              work with
             </p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={containerVariants}
             initial="hidden"
@@ -125,24 +186,23 @@ export function SkillsSection() {
             viewport={{ once: true, margin: "-100px" }}
           >
             {skillCategories.map((category, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 variants={cardVariants}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="relative group"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
-                
+
                 <div className="relative bg-slate-900 rounded-xl p-6 border border-slate-700 hover:border-slate-600 transition-all duration-300 h-full">
                   {/* Icon Header */}
                   <div className="flex items-center gap-4 mb-6">
-                    <motion.div 
+                    <motion.div
                       className={`${category.bgColor} p-4 rounded-lg`}
                       whileHover={{
-  scale: 1.08,
-  backgroundColor: "#1e293b"
-}}
-
+                        scale: 1.08,
+                        backgroundColor: "#1e293b",
+                      }}
                       transition={{ duration: 0.6 }}
                     >
                       <category.icon className={`h-7 w-7 ${category.color}`} />
@@ -151,12 +211,14 @@ export function SkillsSection() {
                       <h3 className="text-xl font-semibold text-white">
                         {category.category}
                       </h3>
-                      <p className="text-slate-500 text-sm">{category.skills.length} skills</p>
+                      <p className="text-slate-500 text-sm">
+                        {category.skills.length} skills
+                      </p>
                     </div>
                   </div>
-                  
+
                   {/* Skills Grid */}
-                  <motion.div 
+                  <motion.div
                     className="flex flex-wrap gap-2"
                     variants={containerVariants}
                   >
@@ -167,7 +229,7 @@ export function SkillsSection() {
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.98 }}
                       >
-                        <Badge 
+                        <Badge
                           variant="secondary"
                           className="bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/50 hover:border-slate-600 transition-all duration-200 cursor-default text-xs py-1.5 px-3"
                         >

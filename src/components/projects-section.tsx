@@ -6,37 +6,76 @@ import { Badge } from "./ui/badge";
 export function ProjectsSection() {
   const projects = [
     {
+      title: "Electromart",
+      description:
+        "ElectroMart is an AI-powered e-commerce assistant built with LangGraph, using a multi-agent architecture for sales, support, and order handling. It combines tool-calling agents, Retrieval-Augmented Generation (RAG), and conversation memory to deliver accurate, context-aware responses. Strict guardrails and intent routing ensure deterministic behavior, prevent hallucinations, and enable reliable multi-turn interactions in real-world e-commerce workflows.",
+      technologies: [
+        "Python",
+        "FastAPI",
+        "Uvicorn",
+        "SQLAlchemy",
+        "OpenAI",
+        "GPT-4o-mini",
+        "LangChain",
+        "LangGraph",
+        "NextJS (Frontend)",
+        "PostgresSQL",
+        "PgVector",
+      ],
+      githubUrl: "https://github.com/Kusaldiss365/Electromart",
+      liveUrl: "https://www.youtube.com/watch?v=j0OJNfm8hcY",
+      image: "/electromart.png",
+    },
+    {
       title: "Cognix",
-      description: "An AI-powered web application designed to support constructive learning by guiding students in answering openended questions. Provides personalized feedback and hints without revealing answers. Built using concepts such as Agentic Flow, Chain of Thought Reasoning, and Retrieval-Augmented Generation (RAG). Incorporates multi-agent architecture to evaluate responses and generate contextual feedback.",
-      technologies: ["Python", "FastAPI", "Uvicorn", "Hugging Face", "ChromaDB", "LangChain", "GPT-4o-mini", "NextJS (Frontend)", "Llama3"],
+      description:
+        "An AI-powered web application designed to support constructive learning by guiding students in answering openended questions. Provides personalized feedback and hints without revealing answers. Built using concepts such as Agentic Flow, Chain of Thought Reasoning, and Retrieval-Augmented Generation (RAG). Incorporates multi-agent architecture to evaluate responses and generate contextual feedback.",
+      technologies: [
+        "Python",
+        "FastAPI",
+        "Uvicorn",
+        "Hugging Face",
+        "ChromaDB",
+        "LangChain",
+        "GPT-4o-mini",
+        "NextJS (Frontend)",
+        "Llama3",
+      ],
       githubUrl: "https://github.com/Kusaldiss365/Cognix_v1",
       liveUrl: "https://youtu.be/J7KggRkwXy8",
-      image: "/cognix.jpeg"
+      image: "/cognix.jpeg",
     },
     {
       title: "FotCast",
-      description: "A mobile application developed to publish news and updates from the Faculty of Technology, focusing on education and sports.",
-      technologies: ["Java (Andriod)", "Firebase Firestore", "Firebase Realtime Database"],
+      description:
+        "A mobile application developed to publish news and updates from the Faculty of Technology, focusing on education and sports.",
+      technologies: [
+        "Java (Andriod)",
+        "Firebase Firestore",
+        "Firebase Realtime Database",
+      ],
       githubUrl: "https://github.com/Kusaldiss365/FotCast",
       liveUrl: "",
-      image: "/fotcast.png"
+      image: "/fotcast.png",
     },
     {
       title: "Rent Car",
-      description: "A Car rental app, Created to handle customers, handle vehicle details and calculate vehicle rental fees with ease using layered architecture.",
+      description:
+        "A Car rental app, Created to handle customers, handle vehicle details and calculate vehicle rental fees with ease using layered architecture.",
       technologies: ["Java", "JavaFX"],
       githubUrl: "https://github.com/Kusaldiss365/Rent_Car_Project",
       liveUrl: "",
-      image: "/rentcar.png"
+      image: "/rentcar.png",
     },
     {
       title: "GalleryLK",
-      description: "An E-commerce website with functionality to login as buyers and sellers to buy products or sell their art products online.",
+      description:
+        "An E-commerce website with functionality to login as buyers and sellers to buy products or sell their art products online.",
       technologies: ["HTML", "CSS", "PHP", "Bootstrap", "MySQL"],
       githubUrl: "https://github.com/Kusaldiss365/Gallery-lk-Last",
       liveUrl: "",
-      image: "/gallerylk.png"
-    }
+      image: "/gallerylk.png",
+    },
   ];
 
   return (
