@@ -58,6 +58,8 @@ export default function ChatWidget() {
 
     setMessages((prev) => [...prev, userMessage]);
 
+    const conversationHistory = [...messages, userMessage].slice(-10);
+
     const { error: userError } = await saveMessage(sessionId, userMessage);
 
     if (userError) {
@@ -65,7 +67,11 @@ export default function ChatWidget() {
     }
 
     try {
-      const data = await sendChatMessage(message, visitorName);
+      const data = await sendChatMessage(
+        message,
+        visitorName,
+        conversationHistory,
+      );
 
       const botReply: ChatMessage = {
         role: "assistant",

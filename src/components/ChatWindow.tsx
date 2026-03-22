@@ -11,6 +11,29 @@ interface Props {
   onSend: (message: string) => Promise<void>;
 }
 
+function renderMessageContent(content: string) {
+  const urlPattern = /(https?:\/\/[^\s]+)/g;
+  const parts = content.split(urlPattern);
+
+  return parts.map((part, index) => {
+    if (/^https?:\/\/[^\s]+$/.test(part)) {
+      return (
+        <a
+          key={`${part}-${index}`}
+          href={part}
+          target="_blank"
+          rel="noreferrer"
+          className="underline underline-offset-2 transition-opacity hover:opacity-80"
+        >
+          {part}
+        </a>
+      );
+    }
+
+    return <span key={`${part}-${index}`}>{part}</span>;
+  });
+}
+
 export default function ChatWindow({ visitorName, messages, onSend }: Props) {
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
@@ -58,7 +81,7 @@ export default function ChatWindow({ visitorName, messages, onSend }: Props) {
                   : "bg-slate-100 text-slate-900"
               }`}
             >
-              {msg.content}
+              {renderMessageContent(msg.content)}
             </div>
           ))
         )}

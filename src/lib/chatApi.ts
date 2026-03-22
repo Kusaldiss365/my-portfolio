@@ -1,4 +1,13 @@
-export async function sendChatMessage(message: string, visitorName?: string) {
+type ChatHistoryMessage = {
+  role: "user" | "assistant";
+  content: string;
+};
+
+export async function sendChatMessage(
+  message: string,
+  visitorName?: string,
+  history: ChatHistoryMessage[] = [],
+) {
   const response = await fetch("/api/chat", {
     method: "POST",
     headers: {
@@ -7,6 +16,7 @@ export async function sendChatMessage(message: string, visitorName?: string) {
     body: JSON.stringify({
       message,
       visitorName,
+      history,
     }),
   });
 
