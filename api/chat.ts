@@ -1,6 +1,6 @@
 import OpenAI from "openai";
-import { projectLinks } from "./projectLinks";
-import { buildContextBlock, retrieveRelevantChunks } from "./rag";
+import { projectLinks } from "./projectLinks.js";
+import { buildContextBlock, retrieveRelevantChunks } from "./rag.js";
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,

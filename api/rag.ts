@@ -1,8 +1,8 @@
 import { createHash } from "node:crypto";
 import { createClient } from "@supabase/supabase-js";
 import OpenAI from "openai";
-import { portfolioContext } from "./portfolioContext";
-import { projectLinks } from "./projectLinks";
+import { portfolioContext } from "./portfolioContext.js";
+import { projectLinks } from "./projectLinks.js";
 
 const DEFAULT_SITE_URL = "https://www.kusaldissanayake.com";
 const EMBEDDING_MODEL = "text-embedding-3-small";
