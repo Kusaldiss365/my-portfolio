@@ -12,6 +12,16 @@ const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+function getBookingContext() {
+  const bookingUrl = process.env.GOOGLE_CALENDAR_BOOKING_URL?.trim();
+
+  if (!bookingUrl) {
+    return "";
+  }
+
+  return `Google Calendar booking link:\n- ${bookingUrl}`;
+}
+
 export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -42,9 +52,10 @@ export default async function handler(req: any, res: any) {
     const relevantChunks = await retrieveRelevantChunks(message);
     const retrievedContext = buildContextBlock(relevantChunks);
     const hasRetrievedContext = relevantChunks.length > 0;
+    const bookingContext = getBookingContext();
     const effectiveContext = hasRetrievedContext
-      ? `${retrievedContext}\n\nFallback portfolio context:\n${portfolioContext}`
-      : portfolioContext;
+      ? `${retrievedContext}\n\nFallback portfolio context:\n${portfolioContext}${bookingContext ? `\n\n${bookingContext}` : ""}`
+      : `${portfolioContext}${bookingContext ? `\n\n${bookingContext}` : ""}`;
 
     const response = await client.responses.create({
       model: "gpt-4.1-mini",
@@ -70,6 +81,7 @@ export default async function handler(req: any, res: any) {
     - Answer the user's specific question directly and do not include unrelated sections.
     - Do not add extra categories like skills, projects, or experience unless the user asked for them.
     - If the user asks to see projects, include the relevant GitHub links.
+    - If the user asks to book a meeting, schedule a call, or talk to Kusal, include the Google Calendar booking link when it is available.
     - Prefer the retrieved context when it is present because it reflects indexed site content.
     - If retrieved context is missing or incomplete, use the fallback portfolio context.
     - If the user asks about skills, experience, education, or achievements, answer from the available portfolio context.

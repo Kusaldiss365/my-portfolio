@@ -2,8 +2,9 @@ import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { CalendarDays, Mail, MapPin, Phone, Send } from "lucide-react";
 import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
+import { googleCalendarBookingUrl } from "@/lib/booking";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -113,6 +114,32 @@ const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
                     </div>
                   </Card>
                 ))}
+
+                {googleCalendarBookingUrl && (
+                  <Card className="bg-gradient-to-r from-blue-950/70 to-slate-800 border-sky-800/60 p-5">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-4">
+                        <div className="p-3 rounded-lg bg-sky-500/15">
+                          <CalendarDays className="h-5 w-5 text-sky-300" />
+                        </div>
+                        <div>
+                          <p className="text-white font-medium">Book a meeting</p>
+                          <p className="text-slate-300 text-sm">
+                            Pick a time on Kusal&apos;s Google Calendar.
+                          </p>
+                        </div>
+                      </div>
+                      <a
+                        href={googleCalendarBookingUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-lg bg-sky-500 px-4 py-2 text-sm font-medium text-slate-950 transition-colors hover:bg-sky-400"
+                      >
+                        Book now
+                      </a>
+                    </div>
+                  </Card>
+                )}
               </div>
             </div>
             

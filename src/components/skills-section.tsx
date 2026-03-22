@@ -17,14 +17,14 @@ export function SkillsSection() {
     icon: LucideIcon;
     color: string;
     bgColor: string;
-    skills: string[];
+      skills: string[];
   }[] = [
     {
       category: "Programming Languages",
       icon: Code2,
       color: "text-blue-400",
       bgColor: "bg-blue-500/10",
-      skills: ["JavaScript", "TypeScript", "Python", "Java", "C", "C++", "PHP"],
+      skills: ["Java", "C", "C#", "Python", "TypeScript", "JavaScript"],
     },
     {
       category: "Frontend",
@@ -37,10 +37,10 @@ export function SkillsSection() {
         "Vue.js",
         "Nuxt.js",
         "Tailwind CSS",
-        "Redux",
-        "HTML/CSS",
-        "Sass",
-        "Marble(IFS)",
+        "Zustand",
+        "HTML5",
+        "CSS3",
+        "Marble (IFS)",
       ],
     },
     {
@@ -55,8 +55,7 @@ export function SkillsSection() {
         "FastAPI",
         "REST APIs",
         "Microservices",
-        "Hibernate",
-        "SQLAlchemy",
+        "ASP.NET Core",
       ],
     },
     {
@@ -70,7 +69,7 @@ export function SkillsSection() {
         "MongoDB",
         "Firebase",
         "ChromaDB",
-        "Pgvector",
+        "pgvector",
         "PL/SQL",
       ],
     },
@@ -81,12 +80,11 @@ export function SkillsSection() {
       bgColor: "bg-orange-500/10",
       skills: [
         "WordPress (Headless)",
-        "Hosting (cPanel)",
-        "AWS Academy Graduate",
+        "cPanel Hosting",
       ],
     },
     {
-      category: "AI & ML",
+      category: "AI Tools",
       icon: BrainCircuit,
       color: "text-red-400",
       bgColor: "bg-red-500/10",
@@ -95,30 +93,30 @@ export function SkillsSection() {
         "LangGraph",
         "Hugging Face",
         "Ollama",
-        "Llama3",
         "OpenAI",
         "RAG",
-        "Tool Calling",
-        "Guardrails",
-        "Self Reflection",
       ],
     },
     {
-      category: "Tools & Others",
+      category: "Tools",
       icon: Wrench,
       color: "text-pink-400",
       bgColor: "bg-pink-500/10",
       skills: [
         "Git",
         "Postman",
-        "Jira",
-        "Agile",
         "Bruno",
         "Swagger",
-        "Azure DevOps",
         "Figma",
         "Docker",
       ],
+    },
+    {
+      category: "Project Management",
+      icon: Wrench,
+      color: "text-amber-400",
+      bgColor: "bg-amber-500/10",
+      skills: ["Jira", "Azure DevOps"],
     },
   ];
 

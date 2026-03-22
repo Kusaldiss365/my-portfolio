@@ -150,6 +150,16 @@ function hashContent(input: string) {
   return createHash("sha256").update(input).digest("hex");
 }
 
+function getBookingSourceText() {
+  const bookingUrl = process.env.GOOGLE_CALENDAR_BOOKING_URL?.trim();
+
+  if (!bookingUrl) {
+    return "";
+  }
+
+  return `Booking:\n- Google Calendar booking link: ${bookingUrl}`;
+}
+
 function splitIntoChunks(text: string) {
   const normalized = text.replace(/\s+/g, " ").trim();
 
@@ -290,11 +300,12 @@ export async function crawlSite(siteUrl = getSiteUrl()) {
 
 function getSourceBackedPages(siteUrl: string): CrawledPage[] {
   const baseUrl = siteUrl.endsWith("/") ? siteUrl.slice(0, -1) : siteUrl;
+  const bookingSourceText = getBookingSourceText();
   const sourcePages = [
     {
       url: `${baseUrl}/__index-source/portfolio`,
       title: "Portfolio Source Context",
-      text: portfolioContext.trim(),
+      text: `${portfolioContext.trim()}${bookingSourceText ? `\n\n${bookingSourceText}` : ""}`,
     },
     {
       url: `${baseUrl}/__index-source/projects`,

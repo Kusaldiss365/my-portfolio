@@ -19,7 +19,7 @@ Education:
 
 Work Experience:
 - IFS R&D International (Pvt) Ltd. - Software Engineer
-  [2025 October - 2026 February]
+  [2025 October - Present]
   Worked with PL/SQL and Oracle Database in IFS Cloud (Marble framework), collaborating in Agile/Scrum.
   Completed the IFS New Software Engineer Program with hands-on experience in PL/SQL, Marble framework, web development, and unit testing.
 
