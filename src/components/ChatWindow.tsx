@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export interface ChatMessage {
   role: "user" | "assistant";
@@ -15,6 +15,14 @@ export default function ChatWindow({ visitorName, messages, onSend }: Props) {
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
   const trimmedInput = input.trim();
+  const endOfMessagesRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    endOfMessagesRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+    });
+  }, [messages, sending]);
 
   const handleSend = async () => {
     if (!trimmedInput || sending) return;
@@ -44,7 +52,7 @@ export default function ChatWindow({ visitorName, messages, onSend }: Props) {
           messages.map((msg, index) => (
             <div
               key={index}
-              className={`max-w-[85%] rounded-2xl p-3 text-sm shadow-sm ${
+              className={`max-w-[85%] whitespace-pre-wrap break-words rounded-2xl p-3 text-sm shadow-sm ${
                 msg.role === "user"
                   ? "ml-auto bg-gradient-to-r from-slate-950 to-sky-800 text-white"
                   : "bg-slate-100 text-slate-900"
@@ -64,6 +72,8 @@ export default function ChatWindow({ visitorName, messages, onSend }: Props) {
             </span>
           </div>
         )}
+
+        <div ref={endOfMessagesRef} />
       </div>
 
       <form

@@ -52,6 +52,8 @@ export default async function handler(req: any, res: any) {
     - If retrieved context is missing or incomplete, use the fallback portfolio context.
     - If the user asks about skills, experience, education, or achievements, answer from the available portfolio context.
     - Keep answers concise and professional.
+    - Format list-like answers in a readable way using short headings and bullet points instead of one long paragraph.
+    - Use plain text bullets with line breaks, not JSON.
     - Only say information is unavailable when it is missing from both the retrieved context and the fallback portfolio context.
         `,
         },
