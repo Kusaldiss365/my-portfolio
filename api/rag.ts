@@ -518,7 +518,7 @@ async function retrieveWithFallback(queryEmbedding: number[]) {
     throw error;
   }
 
-  return (data ?? [])
+  const scoredChunks: RetrievedChunk[] = (data ?? [])
     .map((row: Record<string, unknown>) => {
       const embedding = parseStoredVector(row.embedding);
       if (!embedding) {
@@ -532,7 +532,9 @@ async function retrieveWithFallback(queryEmbedding: number[]) {
         similarity: cosineSimilarity(queryEmbedding, embedding),
       } satisfies RetrievedChunk;
     })
-    .filter((row): row is RetrievedChunk => Boolean(row))
+    .filter((row): row is RetrievedChunk => row !== null);
+
+  return scoredChunks
     .sort((left, right) => (right.similarity ?? -1) - (left.similarity ?? -1))
     .slice(0, MATCH_COUNT);
 }
