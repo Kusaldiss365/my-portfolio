@@ -81,7 +81,8 @@ export default async function handler(req: any, res: any) {
     - Answer the user's specific question directly and do not include unrelated sections.
     - Do not add extra categories like skills, projects, or experience unless the user asked for them.
     - If the user asks to see projects, include the relevant GitHub links.
-    - If the user asks to book a meeting, schedule a call, or talk to Kusal, include the Google Calendar booking link when it is available.
+    - If the user asks for contact details, reaching out, scheduling, booking, appointments, or talking to Kusal, include the relevant contact details.
+    - When a Google Calendar booking link is available and the user's intent is contact or scheduling related, suggest booking an appointment in the same answer.
     - Prefer the retrieved context when it is present because it reflects indexed site content.
     - If retrieved context is missing or incomplete, use the fallback portfolio context.
     - If the user asks about skills, experience, education, or achievements, answer from the available portfolio context.
