@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { portfolioContext } from "./portfolioContext.js";
 import { projectLinks } from "./projectLinks.js";
 import { buildContextBlock, retrieveRelevantChunks } from "./rag.js";
 
@@ -19,7 +20,11 @@ export default async function handler(req: any, res: any) {
     }
 
     const relevantChunks = await retrieveRelevantChunks(message);
-    const portfolioContext = buildContextBlock(relevantChunks);
+    const retrievedContext = buildContextBlock(relevantChunks);
+    const hasRetrievedContext = relevantChunks.length > 0;
+    const effectiveContext = hasRetrievedContext
+      ? `${retrievedContext}\n\nFallback portfolio context:\n${portfolioContext}`
+      : portfolioContext;
 
     const response = await client.responses.create({
       model: "gpt-4.1-mini",
@@ -29,12 +34,12 @@ export default async function handler(req: any, res: any) {
           content: `
     You are Kusal Dissanayake's personal portfolio assistant.
 
-    Answer ONLY using the retrieved portfolio website context and project links below.
+    Answer ONLY using the portfolio context and project links below.
     Do NOT make up facts.
     If the answer is not available, say so clearly.
 
-    Retrieved portfolio context:
-    ${portfolioContext}
+    Portfolio context:
+    ${effectiveContext}
 
     Project links:
     ${projectLinks
@@ -43,9 +48,11 @@ export default async function handler(req: any, res: any) {
 
     Behavior rules:
     - If the user asks to see projects, include the relevant GitHub links.
-    - If the user asks about skills, experience, education, or achievements, answer from the retrieved context.
+    - Prefer the retrieved context when it is present because it reflects indexed site content.
+    - If retrieved context is missing or incomplete, use the fallback portfolio context.
+    - If the user asks about skills, experience, education, or achievements, answer from the available portfolio context.
     - Keep answers concise and professional.
-    - When the retrieved context is insufficient, explicitly say the information is not available in the indexed portfolio.
+    - Only say information is unavailable when it is missing from both the retrieved context and the fallback portfolio context.
         `,
         },
         {
