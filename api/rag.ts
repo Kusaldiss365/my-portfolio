@@ -518,21 +518,23 @@ async function retrieveWithFallback(queryEmbedding: number[]) {
     throw error;
   }
 
-  const scoredChunks: RetrievedChunk[] = (data ?? [])
-    .map((row: Record<string, unknown>) => {
-      const embedding = parseStoredVector(row.embedding);
-      if (!embedding) {
-        return null;
-      }
+  const scoredChunks: RetrievedChunk[] = [];
 
-      return {
-        content: String(row.content ?? ""),
-        url: row.url ? String(row.url) : null,
-        title: row.title ? String(row.title) : null,
-        similarity: cosineSimilarity(queryEmbedding, embedding),
-      } satisfies RetrievedChunk;
-    })
-    .filter((row): row is RetrievedChunk => row !== null);
+  for (const row of data ?? []) {
+    const typedRow = row as Record<string, unknown>;
+    const embedding = parseStoredVector(typedRow.embedding);
+
+    if (!embedding) {
+      continue;
+    }
+
+    scoredChunks.push({
+      content: String(typedRow.content ?? ""),
+      url: typedRow.url ? String(typedRow.url) : null,
+      title: typedRow.title ? String(typedRow.title) : null,
+      similarity: cosineSimilarity(queryEmbedding, embedding),
+    });
+  }
 
   return scoredChunks
     .sort((left, right) => (right.similarity ?? -1) - (left.similarity ?? -1))
