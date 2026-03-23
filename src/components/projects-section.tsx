@@ -6,6 +6,58 @@ import { Badge } from "./ui/badge";
 export function ProjectsSection() {
   const projects = [
     {
+      title: "Portfolio chatbot",
+      description:
+        'An AI-powered portfolio chatbot with hybrid RAG, enabling users to ask about skills, experience, projects, contact details and meeting availability through a conversational interface. Implemented semantic retrieval with OpenAI embeddings and Supabase pgvector, indexed portfolio content into chunked documents, added fallback context for reliability, supported chat history-aware follow-ups and integrated Google Calendar booking suggestions with a custom React chat UI. Live demo available on this website "Kusal\'s AI"',
+      technologies: [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "OpenAI",
+        "GPT-4o-mini",
+        "Supabase",
+        "Vercel Serverless Functions",
+        "PostgresSQL",
+        "Pgvector",
+      ],
+      githubUrl: "https://github.com/Kusaldiss365/my-portfolio",
+      liveUrl: "",
+      image: "/portfoliobot.png",
+    },
+    {
+      title: "ProjectSpace",
+      description:
+        "A full-stack project and task management system built with ASP.NET Core and Entity Framework Core, featuring secure JWT-based authentication and user-scoped data access. Allows users to create, manage, and track projects and tasks within their own workspace. Designed with a RESTful API architecture, DTO-based request handling, and scalable backend structure for maintainability and performance.",
+      technologies: [
+        "ASP.NET Core Web API",
+        "C#",
+        "Entity Framework Core",
+        "ASP.NET Core Identity",
+        "JWT Authentication",
+        "SQL Server",
+      ],
+      githubUrl: "https://github.com/Kusaldiss365/ProjectSpace",
+      liveUrl: "",
+      image: "/projectspace.png",
+    },
+    {
+      title: "GameStore",
+      description:
+        "A backend-driven game store application built with ASP.NET Core, providing APIs to manage games, categories, and inventory with full CRUD functionality. Implements RESTful architecture with Entity Framework Core for data access, enabling efficient querying, structured data handling, and scalable backend design. Designed to simulate a real-world e-commerce system with clean separation of concerns and maintainable service-layer architecture.",
+      technologies: [
+        "ASP.NET Core Web API",
+        "C#",
+        "ADO.NET",
+        "SQL Server",
+        "LINQ",
+        "REST API",
+      ],
+      githubUrl: "https://github.com/Kusaldiss365/GameStore",
+      liveUrl: "",
+      image: "/gamestore.png",
+    },
+    {
       title: "Electromart",
       description:
         "ElectroMart is an AI-powered e-commerce assistant built with LangGraph, using a multi-agent architecture for sales, support, and order handling. It combines tool-calling agents, Retrieval-Augmented Generation (RAG), and conversation memory to deliver accurate, context-aware responses. Strict guardrails and intent routing ensure deterministic behavior, prevent hallucinations, and enable reliable multi-turn interactions in real-world e-commerce workflows.",
@@ -20,7 +72,7 @@ export function ProjectsSection() {
         "LangGraph",
         "NextJS (Frontend)",
         "PostgresSQL",
-        "PgVector",
+        "Pgvector",
       ],
       githubUrl: "https://github.com/Kusaldiss365/Electromart",
       liveUrl: "https://www.youtube.com/watch?v=j0OJNfm8hcY",
