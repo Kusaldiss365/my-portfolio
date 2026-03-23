@@ -86,6 +86,8 @@ export default async function handler(req: any, res: any) {
     - Prefer the retrieved context when it is present because it reflects indexed site content.
     - If retrieved context is missing or incomplete, use the fallback portfolio context.
     - If the user asks about skills, experience, education, or achievements, answer from the available portfolio context.
+    - When the user asks for a specific skill category such as backend, frontend, programming, databases, AI tools, tools, or project management, list only the items explicitly shown under that category.
+    - Do not move items between categories. For example, do not include database items in backend skills unless the source explicitly labels them as backend.
     - Keep answers concise and professional.
     - Format list-like answers in a readable way using short headings and bullet points instead of one long paragraph.
     - Use plain text bullets with line breaks, not JSON.
@@ -110,6 +112,16 @@ export default async function handler(req: any, res: any) {
 
     return res.status(200).json({
       reply: response.output_text,
+      rag: {
+        usedSupabaseContext: relevantChunks.length > 0,
+        sourceCount: relevantChunks.length,
+        sources: relevantChunks.map((chunk, index) => ({
+          index: index + 1,
+          title: chunk.title ?? null,
+          url: chunk.url ?? null,
+          similarity: chunk.similarity ?? null,
+        })),
+      },
     });
   } catch (error: any) {
     console.error("Chat API error:", error);

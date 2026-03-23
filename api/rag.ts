@@ -409,7 +409,22 @@ export async function indexSitePages(siteUrl = getSiteUrl()) {
       throw existingPageError;
     }
 
-    if (existingPage?.content_hash === page.hash) {
+    let existingChunkCount = 0;
+
+    if (existingPage?.id) {
+      const { count, error: chunkCountError } = await supabase
+        .from("site_chunks")
+        .select("id", { count: "exact", head: true })
+        .eq("page_id", existingPage.id);
+
+      if (chunkCountError) {
+        throw chunkCountError;
+      }
+
+      existingChunkCount = count ?? 0;
+    }
+
+    if (existingPage?.content_hash === page.hash && existingChunkCount > 0) {
       skippedPages += 1;
 
       const { error: touchError } = await supabase
@@ -417,6 +432,7 @@ export async function indexSitePages(siteUrl = getSiteUrl()) {
         .update({
           title: page.title,
           content: page.text,
+          raw_text: page.text,
           last_crawled_at: new Date().toISOString(),
         })
         .eq("id", existingPage.id);
@@ -436,6 +452,7 @@ export async function indexSitePages(siteUrl = getSiteUrl()) {
           url: page.url,
           title: page.title,
           content: page.text,
+          raw_text: page.text,
           content_hash: page.hash,
           last_crawled_at: new Date().toISOString(),
           last_indexed_at: new Date().toISOString(),
@@ -470,6 +487,7 @@ export async function indexSitePages(siteUrl = getSiteUrl()) {
       title: page.title,
       chunk_index: chunkIndex,
       content,
+      chunk_text: content,
       content_hash: hashContent(`${page.hash}:${chunkIndex}:${content}`),
       embedding: toPgVectorLiteral(embeddings[chunkIndex]),
     }));
