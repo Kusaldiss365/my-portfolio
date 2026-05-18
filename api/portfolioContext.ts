@@ -57,7 +57,7 @@ Technical Skills:
 - Backend: Laravel, Spring Boot, FastAPI, REST APIs, Microservices, Node.js, ASP.NET Core
 - Databases: MySQL, Firebase, PostgreSQL, ChromaDB, MongoDB, PL/SQL, pgvector
 - CMS & DevOps: WordPress (Headless), cPanel hosting, AWS EC2, AWS RDS, AWS S3, AWS SSM, AWS IAM
-- AI Tools: LangChain, ChromaDB, Hugging Face, LangGraph, OpenAI, OpenAI APIs, Ollama, RAG, Multi-Agent Systems, Voice AI
+- AI Tools: LangChain, ChromaDB, Hugging Face, LangGraph, OpenAI, OpenAI APIs, Ollama, RAG, Multi-Agent Systems
 - Tools: Git, Postman, Figma, Bruno, Swagger, Docker, Langfuse
 - Project Management: Jira, Azure DevOps
 

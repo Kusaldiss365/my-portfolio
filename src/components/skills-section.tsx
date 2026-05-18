@@ -102,7 +102,6 @@ export function SkillsSection() {
         "OpenAI APIs",
         "RAG",
         "Multi-Agent Systems",
-        "Voice AI",
       ],
     },
     {
