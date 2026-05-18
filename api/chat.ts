@@ -58,7 +58,7 @@ export default async function handler(req: any, res: any) {
       : `${portfolioContext}${bookingContext ? `\n\n${bookingContext}` : ""}`;
 
     const response = await client.responses.create({
-      model: "gpt-4.1-mini",
+      model: "gpt-5.4-mini",
       input: [
         {
           role: "system",
