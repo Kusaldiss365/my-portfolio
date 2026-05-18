@@ -3,13 +3,23 @@ import { Briefcase } from "lucide-react";
 export function ExperienceSection() {
   const experiences = [
     {
+      company: "AIGP Health (Pvt) Ltd.",
+      position: "Software Engineer",
+      period: "2026 June - Present",
+      description: [
+        "Developing scalable AI-powered healthcare systems, including multi-agent voice evaluation platforms, AI medical scribe testing frameworks, and autonomous clinical AI optimization pipelines.",
+        "Working with Python, FastAPI, OpenAI APIs, LangGraph-style orchestration, Langfuse, RAG pipelines, and real-time voice AI systems.",
+        "Leveraging AWS cloud infrastructure, including EC2, RDS, S3, and secure SSM-based environments for deployment, analytics, and large-scale LLM evaluation workflows.",
+      ],
+    },
+    {
       company: "IFS R&D International (Pvt) Ltd.",
       position: "Software Engineer",
-      period: "2025 October - Present",
+      period: "2025 October - 2026 February",
       description: [
         "Working with PL/SQL and Oracle Database in IFS Cloud(Marble framework), collaborating in an Agile/Scrum environment.",
         "Completed the IFS New Software Engineer Program, gaining hands-on experience in PL/SQL, Marble framework, web development, and unit testing.",
-      ]
+      ],
     },
     {
       company: "Visionex Digital (Pvt) Ltd.",
@@ -33,17 +43,17 @@ export function ExperienceSection() {
         "Participating in international client meetings, handling technical discussions and updates.",
         "Guided interns and took part in product launches and client demos.",
         "Engaged in hosting and maintenance of live websites."
-      ]
+      ],
     },
-        {
+    {
       company: "Visionex Digital (Pvt) Ltd.",
       position: "Intern Software Engineer",
       period: "2024 February - 2024 August",
       description: [
         "Developed web applications using Nuxt.js, Vue.js, and Laravel.",
-        "Developed custom wordpress themes to fit client requirements (Headless wordpress)",
+        "Developed custom WordPress themes to fit client requirements (Headless WordPress).",
         "Engaged in hosting and maintenance of live websites.",
-      ]
+      ],
     },
     {
       company: "Akbar Brothers | Head Office",
@@ -53,8 +63,8 @@ export function ExperienceSection() {
         "Worked with IFS-V10 (ERP) system on Material purchasing, Shipment planning and Managing BOMs etc.",
         "Effectively managed diverse procurement processes, ensuring timely and cost-effective delivery.",
         "Cultivated strong supplier relationships, negotiated favorable terms, and ensured compliance.",
-      ]
-    }
+      ],
+    },
   ];
 
   return (

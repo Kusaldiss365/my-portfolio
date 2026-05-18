@@ -81,6 +81,11 @@ export function SkillsSection() {
       skills: [
         "WordPress (Headless)",
         "cPanel Hosting",
+        "AWS EC2",
+        "AWS RDS",
+        "AWS S3",
+        "AWS SSM",
+        "AWS IAM",
       ],
     },
     {
@@ -94,7 +99,10 @@ export function SkillsSection() {
         "Hugging Face",
         "Ollama",
         "OpenAI",
+        "OpenAI APIs",
         "RAG",
+        "Multi-Agent Systems",
+        "Voice AI",
       ],
     },
     {
@@ -109,6 +117,7 @@ export function SkillsSection() {
         "Swagger",
         "Figma",
         "Docker",
+        "Langfuse",
       ],
     },
     {

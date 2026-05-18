@@ -1,8 +1,8 @@
 export const portfolioContext = `
-Kusal Dissanayake is a Software Engineer with professional experience building scalable web applications and SaaS platforms using Nuxt.js, Next.js, Spring Boot, and microservices.
+Kusal Dissanayake is a Software Engineer with professional experience building scalable AI-powered healthcare systems, web applications, and SaaS platforms using Python, FastAPI, OpenAI APIs, Nuxt.js, Next.js, Spring Boot, and microservices.
 
 About:
-- Full-stack developer with experience in frontend, backend, AI systems, and cloud-oriented development
+- Full-stack developer with experience in frontend, backend, AI systems, healthcare AI platforms, and cloud-oriented development
 - 2 years of industry experience in software engineering
 - 1 year of research experience in Python building AI agentic flows and RAG-based systems
 - Also has hands-on .NET experience through personal projects
@@ -18,8 +18,14 @@ Education:
   Colombo district rank: 6
 
 Work Experience:
+- AIGP Health (Pvt) Ltd. - Software Engineer
+  [2026 June - Present]
+  Developing scalable AI-powered healthcare systems including multi-agent voice evaluation platforms, AI medical scribe testing frameworks, and autonomous clinical AI optimization pipelines.
+  Working with Python, FastAPI, OpenAI APIs, LangGraph-style orchestration, Langfuse, RAG pipelines, and real-time voice AI systems.
+  Leveraging AWS cloud infrastructure including EC2, RDS, S3, IAM, and secure SSM-based environments for deployment, analytics, and large-scale LLM evaluation workflows.
+
 - IFS R&D International (Pvt) Ltd. - Software Engineer
-  [2025 October - Present]
+  [2025 October - 2026 February]
   Worked with PL/SQL and Oracle Database in IFS Cloud (Marble framework), collaborating in Agile/Scrum.
   Completed the IFS New Software Engineer Program with hands-on experience in PL/SQL, Marble framework, web development, and unit testing.
 
@@ -50,9 +56,9 @@ Technical Skills:
 - Frontend: Nuxt.js, Vue.js, Next.js, React.js, Tailwind CSS, Zustand, HTML5, CSS3, Marble (IFS)
 - Backend: Laravel, Spring Boot, FastAPI, REST APIs, Microservices, Node.js, ASP.NET Core
 - Databases: MySQL, Firebase, PostgreSQL, ChromaDB, MongoDB, PL/SQL, pgvector
-- CMS & DevOps: WordPress (Headless), cPanel hosting
-- AI Tools: LangChain, ChromaDB, Hugging Face, LangGraph, OpenAI, Ollama
-- Tools: Git, Postman, Figma, Bruno, Swagger, Docker
+- CMS & DevOps: WordPress (Headless), cPanel hosting, AWS EC2, AWS RDS, AWS S3, AWS SSM, AWS IAM
+- AI Tools: LangChain, ChromaDB, Hugging Face, LangGraph, OpenAI, OpenAI APIs, Ollama, RAG, Multi-Agent Systems, Voice AI
+- Tools: Git, Postman, Figma, Bruno, Swagger, Docker, Langfuse
 - Project Management: Jira, Azure DevOps
 
 Personal Projects:

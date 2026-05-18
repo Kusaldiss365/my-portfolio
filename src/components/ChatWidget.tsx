@@ -25,6 +25,11 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
 
   const handleStart = async (name: string) => {
+    const assistantWelcome = welcomeMessage(name);
+
+    setVisitorName(name);
+    setMessages([assistantWelcome]);
+
     const { data, error } = await supabase
       .from("chat_sessions")
       .insert({
@@ -34,22 +39,17 @@ export default function ChatWidget() {
       .single();
 
     if (error) {
-      console.error("Session error:", error.message);
+      console.warn("Chat session logging unavailable:", error.message);
       return;
     }
 
-    setVisitorName(name);
     setSessionId(data.id);
-
-    const assistantWelcome = welcomeMessage(name);
-
-    setMessages([assistantWelcome]);
 
     await saveMessage(data.id, assistantWelcome);
   };
 
   const handleSend = async (message: string) => {
-    if (!sessionId || !visitorName) return;
+    if (!visitorName) return;
 
     const userMessage: ChatMessage = {
       role: "user",
@@ -60,10 +60,12 @@ export default function ChatWidget() {
 
     const conversationHistory = [...messages, userMessage].slice(-10);
 
-    const { error: userError } = await saveMessage(sessionId, userMessage);
+    if (sessionId) {
+      const { error: userError } = await saveMessage(sessionId, userMessage);
 
-    if (userError) {
-      console.error("User message save error:", userError.message);
+      if (userError) {
+        console.warn("User message logging unavailable:", userError.message);
+      }
     }
 
     try {
@@ -80,10 +82,12 @@ export default function ChatWidget() {
 
       setMessages((prev) => [...prev, botReply]);
 
-      const { error: botError } = await saveMessage(sessionId, botReply);
+      if (sessionId) {
+        const { error: botError } = await saveMessage(sessionId, botReply);
 
-      if (botError) {
-        console.error("Bot message save error:", botError.message);
+        if (botError) {
+          console.warn("Bot message logging unavailable:", botError.message);
+        }
       }
     } catch (error) {
       console.error("Chat API call failed:", error);

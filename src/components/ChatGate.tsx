@@ -40,7 +40,7 @@ export default function ChatGate({ onStart }: Props) {
       <button
         onClick={handleStart}
         disabled={!trimmedName}
-        className="w-full rounded-xl bg-gradient-to-r from-slate-950 to-sky-700 px-4 py-3 text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60"
+        className="w-full cursor-pointer rounded-xl bg-gradient-to-r from-slate-950 to-sky-700 px-4 py-3 text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60"
       >
         Start Chat
       </button>
